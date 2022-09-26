@@ -33,22 +33,18 @@ def in_order(t: T | None) -> Iterable[int]:
     [1, 2, 3, 4, 5]
     """
     if t is not None:
-        out = []
-        if t.left is not None:
-            out += in_order(t.left)
-        out += [t.val]
-        if t.right is not None:
-            out += in_order(t.right)
+        yield from in_order(t.left)
+        yield t.val
+        yield from in_order(t.right)
     else:
-        out: list[int] = []
+        pass
 
-    return out  # FIXME
+    return  # FIXME
 
 
 def in_order_stack(t: T | None) -> Iterable[int]:
     exp_stack = stack([])
     exp_stack.add(t)
-    out: list[int] = []
 
     print(exp_stack.top())
     while not exp_stack.is_empty():
@@ -60,12 +56,24 @@ def in_order_stack(t: T | None) -> Iterable[int]:
         elif exp_stack.top() is None:
             exp_stack.pop()
         elif type(exp_stack.top()) == int:
-            out.append(exp_stack.pop())
+            yield exp_stack.pop()
         print(exp_stack.stack)
-    return out[::-1]
+    return
 
 
 if __name__ == '__main__':
     tree = T(2, T(1, None, None), T(4, T(3, None, None), T(5, None, None)))
-    print(in_order_stack(tree))
-    print(in_order(tree))
+    print([t for t in in_order_stack(tree)])
+    print([t for t in in_order(tree)])
+
+'''
+if t is not None:
+        out = []
+        if t.left is not None:
+            out += in_order(t.left)
+        out += [t.val]
+        if t.right is not None:
+            out += in_order(t.right)
+    else:
+        out: list[int] = []
+'''
