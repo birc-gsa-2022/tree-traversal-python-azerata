@@ -12,3 +12,7 @@ def test_in_order() -> None:
     res = list(in_order(tree))
     assert res == [1, 2, 3, 4, 5]
     assert list(in_order(None)) == []
+    print(res)
+
+
+test_in_order()
