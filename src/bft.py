@@ -1,8 +1,14 @@
 """A module for breadth-first traversal of trees."""
 
 from collections import deque
+from dataclasses import dataclass
 from typing import Iterable
 from tree import T
+
+
+@dataclass
+class link:
+    val
 
 
 def bf_order(t: T | None) -> Iterable[int]:
