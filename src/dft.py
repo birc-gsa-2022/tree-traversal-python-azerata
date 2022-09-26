@@ -65,15 +65,3 @@ if __name__ == '__main__':
     tree = T(2, T(1, None, None), T(4, T(3, None, None), T(5, None, None)))
     print([t for t in in_order_stack(tree)])
     print([t for t in in_order(tree)])
-
-'''
-if t is not None:
-        out = []
-        if t.left is not None:
-            out += in_order(t.left)
-        out += [t.val]
-        if t.right is not None:
-            out += in_order(t.right)
-    else:
-        out: list[int] = []
-'''
